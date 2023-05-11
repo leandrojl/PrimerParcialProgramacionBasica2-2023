@@ -2,6 +2,7 @@ package ar.com.unlam.clases.flota;
 
 import java.util.HashSet;
 
+
 public class Flota {
 
 	String nombre;
@@ -11,7 +12,7 @@ public class Flota {
 	public Flota() {
 		this.garage = new HashSet<Vehiculo>();
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
