@@ -22,6 +22,9 @@ public class Auto extends Vehiculo{
        else return false; 
     }
 	
-   
+    public void liberarConductor(Conductor conductor) {
+        conductor=null; 
+   		} 
+   	
     
 }
