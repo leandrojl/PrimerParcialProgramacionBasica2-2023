@@ -15,13 +15,13 @@ public class Viaje {
     protected LocalDate fecha; 
     protected String origen ; 
     protected String destino; 
-    protected double tarifa; 
-    protected Conductor choferEncargado; 
+    protected Double tarifa; 
+    protected Conductor choferEncargado;
+    protected Vehiculo vehiculoAsignado;
     protected Pasajero pasajero; 
 	protected LinkedHashSet<Viaje> historialViajes;
 	protected ArrayList<Viaje> destinosMultiples;
  
-	
 	public Viaje() {
 		
 	}
@@ -89,10 +89,35 @@ public class Viaje {
 	}
 	public void setHistorialViajes(LinkedHashSet<Viaje> historialViajes) {
 		this.historialViajes = historialViajes;
-	} 
-    
-	
-	
+	}
+	public Double getTarifa() {
+		return tarifa;
+	}
+
+	public void setTarifa(Double tarifa) {
+		this.tarifa = tarifa;
+	}
+
+	public Vehiculo getVehiculoAsignado() {
+		return vehiculoAsignado;
+	}
+
+	public void setVehiculoAsignado(Vehiculo vehiculoAsignado) {
+		this.vehiculoAsignado = vehiculoAsignado;
+	}
+
+	public Pasajero getPasajero() {
+		return pasajero;
+	}
+
+	public void setPasajero(Pasajero pasajero) {
+		this.pasajero = pasajero;
+	}
+
+	public ArrayList<Viaje> getDestinosMultiples() {
+		return destinosMultiples;
+	}
+
 	public boolean visualizarMisViajes(LinkedHashSet<Viaje> misViajes) {
 	    boolean resultado = false;
 	    for (Viaje v : misViajes) {
@@ -141,6 +166,11 @@ public class Viaje {
 	    else {
 	        return false;
 	    }
+	}
+
+	public void asignarVehiculo(Vehiculo vehiculo) {
+		setVehiculoAsignado(vehiculo);
+		
 	}
 
 

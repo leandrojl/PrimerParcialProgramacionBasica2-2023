@@ -16,7 +16,7 @@ public class Auto extends Vehiculo{
 	}
 
 	
-    public boolean asignarConductor(Conductor conductor) {
+    public Boolean asignarConductor(Conductor conductor) {
        if(conductor.getDni()!=null && conductor.getNroLicencia()!= null)
     	   return true;
        else return false; 
