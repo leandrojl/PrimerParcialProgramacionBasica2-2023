@@ -27,7 +27,6 @@ public class Conductor extends Persona{
 	public void setTaxiAsignado(Auto taxiAsignado) {
 		this.taxiAsignado = taxiAsignado;
 	}
-
 	
 	
 }

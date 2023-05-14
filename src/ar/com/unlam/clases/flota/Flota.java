@@ -1,16 +1,22 @@
 package ar.com.unlam.clases.flota;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 
 public class Flota {
 
 	String nombre;
-	
-	HashSet<Vehiculo> garage;
+	Integer capacidadDeVehiculos;
+	LinkedHashSet<Vehiculo> garage;
 	
 	public Flota() {
-		this.garage = new HashSet<Vehiculo>();
+		this.garage = new LinkedHashSet<Vehiculo>();
+	}
+	
+	public Flota(String nombre, Integer capacidadDeVehiculos) {
+		this.nombre = nombre;
+		this.capacidadDeVehiculos = capacidadDeVehiculos;
+		this.garage = new LinkedHashSet<Vehiculo>();
 	}
 	
 	public String getNombre() {
@@ -21,14 +27,27 @@ public class Flota {
 		this.nombre = nombre;
 	}
 
-	public HashSet<Vehiculo> getContenedor() {
+	public Integer getCapacidadDeVehiculos() {
+		return capacidadDeVehiculos;
+	}
+
+	public void setCapacidadDeVehiculos(Integer capacidadDeVehiculos) {
+		this.capacidadDeVehiculos = capacidadDeVehiculos;
+	}
+
+	public LinkedHashSet<Vehiculo> getGarage() {
 		return garage;
 	}
 
-	public void setContenedor(HashSet<Vehiculo> contenedor) {
-		this.garage = contenedor;
+	public void setGarage(LinkedHashSet<Vehiculo> garage) {
+		this.garage = garage;
 	}
+
+	public void agregarVehiculo(Vehiculo vehiculo) {
+		if(getGarage().size() < getCapacidadDeVehiculos() ) {
+			getGarage().add(vehiculo);
+		}
 	
-	
+	}
 
 }
