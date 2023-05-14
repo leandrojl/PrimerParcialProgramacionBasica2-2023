@@ -57,7 +57,7 @@ testQueMeDejeCambiarDestinoDeMiViaje();
 
 testQueSePuedanAgregarMasDeUnDestino();
 
-queSeLeCobreUnPorcentajeAUnPasajeroSiNoCancelaElViajeConAnticipacion
+queSeLeCobreUnPorcentajeAUnPasajeroSiNoCancelaElViajeConAnticipacion();
 
 ## MIT License
 
