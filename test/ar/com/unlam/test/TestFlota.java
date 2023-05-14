@@ -274,7 +274,7 @@ public class TestFlota {
 		
 		Conductor valorObtenido=viaje1.getVehiculoAsignado().getConductor();
 		
-		Assert.assertTrue(pasajero1.getViajes().contains(viaje1));
+		Assert.assertTrue(pasajero1.getHistorialViajes().contains(viaje1));
 		Assert.assertEquals(conductor, valorObtenido);
 		
 	}

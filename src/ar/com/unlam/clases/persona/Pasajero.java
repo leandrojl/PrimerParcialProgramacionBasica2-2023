@@ -10,17 +10,14 @@ import ar.com.unlam.clases.flota.Viaje;
 public class Pasajero extends Persona {
 	
 	
-	protected LinkedHashSet<Viaje> historialViajes= new LinkedHashSet<>();;
-
-
+	protected LinkedHashSet<Viaje> historialViajes;
 	protected Double saldo;
-	private LinkedHashSet<Viaje> viajes;
 
 
 	public Pasajero(String nombre, String apellido, Integer dni, double saldo) {
 		super(nombre, apellido, dni);
 		this.saldo = saldo;
-		this.viajes = new LinkedHashSet<Viaje>();
+		this.historialViajes = new LinkedHashSet<Viaje>();
 	}
 
 	public Double getSaldo() {
@@ -38,9 +35,6 @@ public class Pasajero extends Persona {
 	public void setHistorialViajes(LinkedHashSet<Viaje> historialViajes) {
 		this.historialViajes = historialViajes;
 	} 
-    
-	
-	
 	
 	public double consultarSaldoDespuesDeViaje(Pasajero pasajero, double tarifa) {
 	   
@@ -83,16 +77,8 @@ public class Pasajero extends Persona {
 
 
 	public void agregarViaje(Viaje viaje) {
-		this.viajes.add(viaje);
+		this.historialViajes.add(viaje);
 		
-	}
-
-	public LinkedHashSet<Viaje> getViajes() {
-		return viajes;
-	}
-
-	public void setViajes(LinkedHashSet<Viaje> viajes) {
-		this.viajes = viajes;
 	}
 
 	public Conductor buscarConductor(Conductor conductor) {
