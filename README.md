@@ -12,7 +12,7 @@ El objetivo del software es poder tener un sistema de gestión de viajes donde s
 Para resolver el siguiente ejercicio se utilizo el lenguaje Java enfocado en el paradigma de Programacion Orientada a Objetos, donde se utilizo TDD y Herencia para la reutilizacion de codigo
 
 ## Como utilizar este archivo:
-1) En el caso de clonar el repositorio : `git clone https://github.com/leandrojl/EjercicioAlbumDeFiguritasTDD.git`
+1) En el caso de clonar el repositorio : `https://github.com/leandrojl/PrimerParcialProgramacionBasica2-2023.git`
 2) Por motivos de compatibilidad con los compañeros se utilizó JAVASE-15.
 
 ## Testeos desarrollados:
