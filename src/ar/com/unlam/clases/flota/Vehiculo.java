@@ -8,27 +8,34 @@ import ar.com.unlam.clases.persona.Conductor;
 import ar.com.unlam.clases.persona.Pasajero;
 
 public class Vehiculo {
-	String marca;
-	String modelo;
-	String patente;
-	Integer capacidad;
-	Integer kilometrajeDeViaje;
-	Integer tarifa;
-	Integer litrosDeNafta;
-	Conductor conductor;
-	HashSet<Pasajero> pasajeros;
+	protected String marca;
+	protected String modelo;
+	protected String patente;
+	protected Integer capacidad;
+	protected Integer kilometrajeDeViaje;
+	protected Integer tarifa;
+	protected Integer litrosDeNafta;
+	protected Conductor conductor=null;
+	protected HashSet<Pasajero> pasajeros;
 	
 	public Vehiculo(String marca, String modelo, String patente, Integer capacidad, Integer tarifa){
 		this.marca = marca;
 		this.modelo = modelo;
 		this.patente = patente;
-		this.pasajeros = new HashSet<Pasajero>(capacidad);
+		this.capacidad= capacidad;
+		this.pasajeros = new HashSet<Pasajero>();
 		this.tarifa = tarifa;
 	}
 	
 	public void arrancar() {};
 	
 	public void apagado() {}
+	
+	public Boolean asignarConductor(Conductor conductor) {
+		
+		return false;
+		
+	}
 
 	public String getMarca() {
 		return marca;
@@ -117,7 +124,6 @@ public class Vehiculo {
 		//	return false;
 		Vehiculo other = (Vehiculo) obj;
 		return Objects.equals(patente, other.patente);
-	};
-	
+	}
 
 }

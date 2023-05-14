@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 import ar.com.unlam.clases.persona.Conductor;
 import ar.com.unlam.clases.persona.Pasajero;
@@ -14,13 +15,14 @@ public class Viaje {
     protected LocalDate fecha; 
     protected String origen ; 
     protected String destino; 
-    protected double tarifa; 
-    protected Conductor choferEncargado; 
+    protected Double tarifa; 
+    protected Conductor choferEncargado;
+    protected Vehiculo vehiculoAsignado;
     protected Pasajero pasajero; 
 	protected ArrayList<Viaje> destinosMultiples;
- 
+    protected LinkedHashSet<Viaje>  historialViajes; 
 	
-	public Viaje() {
+    public Viaje() {
 		
 	}
 	
@@ -82,7 +84,60 @@ public class Viaje {
 	public void setChoferEncargado(Conductor choferEncargado) {
 		this.choferEncargado = choferEncargado;
 	}
-	
+
+	public LinkedHashSet<Viaje> getHistorialViajes() {
+		return historialViajes;
+	}
+	public void setHistorialViajes(LinkedHashSet<Viaje> historialViajes) {
+		this.historialViajes = historialViajes;
+	}
+	public Double getTarifa() {
+		return tarifa;
+	}
+
+	public void setTarifa(Double tarifa) {
+		this.tarifa = tarifa;
+	}
+
+	public Vehiculo getVehiculoAsignado() {
+		return vehiculoAsignado;
+	}
+
+	public void setVehiculoAsignado(Vehiculo vehiculoAsignado) {
+		this.vehiculoAsignado = vehiculoAsignado;
+	}
+
+	public Pasajero getPasajero() {
+		return pasajero;
+	}
+
+	public void setPasajero(Pasajero pasajero) {
+		this.pasajero = pasajero;
+	}
+
+	public ArrayList<Viaje> getDestinosMultiples() {
+		return destinosMultiples;
+	}
+
+	public boolean visualizarMisViajes(LinkedHashSet<Viaje> misViajes) {
+	    boolean resultado = false;
+	    for (Viaje v : misViajes) {
+	        v.imprimirViaje();
+	        if (v.getHora() != null && v.getFecha() != null && v.getOrigen() != null &&
+	            v.getDestino() != null && v.getChoferEncargado() != null) {
+	            resultado = true;
+	        }
+	    }
+	    return resultado;
+	}
+
+
+	public void imprimirViaje() {
+		 System.out.println( "Viaje:\n"+ "Hora:" + hora +"\n" + "Fecha:" + fecha +"\n" + "Origen:" +origen +"\n" + "Destino:" + destino +"\n"  +
+	          "Chofer:" + choferEncargado.getNombre()+ "" + choferEncargado.getApellido()+ "\n");
+	  
+		}
+
 
 	public boolean confirmarReserva(Viaje viaje) {
 		if(viaje.getHora()!= null && viaje.getFecha()!= null &&
@@ -115,12 +170,7 @@ public class Viaje {
 	    }
 	}
 
-	public void imprimirViaje() {
-		 System.out.println( "Viaje:\n"+ "Hora:" + hora +"\n" + "Fecha:" + fecha +"\n" + "Origen:" +origen +"\n" + "Destino:" + destino +"\n"  +
-	          "Chofer:" + choferEncargado.getNombre()+ "" + choferEncargado.getApellido()+ "\n");
-	  
-		}
-	
+
 	
 	public double cobrarSeguroDeCancelacion(Pasajero pasajero, Viaje viaje) {
 		LocalTime ahora = LocalTime.now();
@@ -139,8 +189,13 @@ public class Viaje {
 	        return saldoActual;
 	    }
 	}
-
 	
+	public void asignarVehiculo(Vehiculo vehiculo) {
+		setVehiculoAsignado(vehiculo);
+		
+	}
+
+
 	
 	
 }
