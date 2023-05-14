@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 
 import ar.com.unlam.clases.persona.Conductor;
 import ar.com.unlam.clases.persona.Pasajero;
@@ -18,7 +17,6 @@ public class Viaje {
     protected double tarifa; 
     protected Conductor choferEncargado; 
     protected Pasajero pasajero; 
-	protected LinkedHashSet<Viaje> historialViajes;
 	protected ArrayList<Viaje> destinosMultiples;
  
 	
@@ -84,33 +82,7 @@ public class Viaje {
 	public void setChoferEncargado(Conductor choferEncargado) {
 		this.choferEncargado = choferEncargado;
 	}
-	public LinkedHashSet<Viaje> getHistorialViajes() {
-		return historialViajes;
-	}
-	public void setHistorialViajes(LinkedHashSet<Viaje> historialViajes) {
-		this.historialViajes = historialViajes;
-	} 
-    
 	
-	
-	public boolean visualizarMisViajes(LinkedHashSet<Viaje> misViajes) {
-	    boolean resultado = false;
-	    for (Viaje v : misViajes) {
-	        v.imprimirViaje();
-	        if (v.getHora() != null && v.getFecha() != null && v.getOrigen() != null &&
-	            v.getDestino() != null && v.getChoferEncargado() != null) {
-	            resultado = true;
-	        }
-	    }
-	    return resultado;
-	}
-
-
-	private void imprimirViaje() {
-		 System.out.println( "Viaje:\n"+ "Hora:" + hora +"\n" + "Fecha:" + fecha +"\n" + "Origen:" +origen +"\n" + "Destino:" + destino +"\n"  +
-	          "Chofer:" + choferEncargado.getNombre()+ "" + choferEncargado.getApellido()+ "\n");
-	  
-		}
 
 	public boolean confirmarReserva(Viaje viaje) {
 		if(viaje.getHora()!= null && viaje.getFecha()!= null &&
@@ -130,7 +102,7 @@ public class Viaje {
 		
 		LocalTime ahora = LocalTime.now();
 	    LocalTime horaViaje = viaje.getHora();
-	    
+	   
 	    Duration duracion = Duration.between(ahora, horaViaje);
 	    long minutosAntesDeViaje = duracion.toMinutes();
 	   
@@ -143,8 +115,32 @@ public class Viaje {
 	    }
 	}
 
+	public void imprimirViaje() {
+		 System.out.println( "Viaje:\n"+ "Hora:" + hora +"\n" + "Fecha:" + fecha +"\n" + "Origen:" +origen +"\n" + "Destino:" + destino +"\n"  +
+	          "Chofer:" + choferEncargado.getNombre()+ "" + choferEncargado.getApellido()+ "\n");
+	  
+		}
+	
+	
+	public double cobrarSeguroDeCancelacion(Pasajero pasajero, Viaje viaje) {
+		LocalTime ahora = LocalTime.now();
+	    LocalTime horaViaje = viaje.getHora();
+	    double seguro= 100.0;
+	    double saldoActual = pasajero.getSaldo();
+	    Duration duracion = Duration.between(ahora, horaViaje);
+	    long minutosAntesDeViaje = duracion.toMinutes();
+	   
+	    if (minutosAntesDeViaje < 60) { 
+	    	 pasajero.setSaldo(saldoActual - seguro);
+	         return pasajero.getSaldo();
+	    } 
+	    
+	    else {
+	        return saldoActual;
+	    }
+	}
 
-		
-
+	
+	
 	
 }

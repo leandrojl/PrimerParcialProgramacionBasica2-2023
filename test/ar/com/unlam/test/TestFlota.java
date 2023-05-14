@@ -98,14 +98,14 @@ public void testQueMeIndiqueMiSaldoLuegoDeAbonarUnViaje() {
 	
 	double tarifaEsperada = 2000.0;
 	
-   assertEquals(tarifaEsperada, pasajero03.consultarSaldoDespuesDeViaje(pasajero03, 3000.0), 0.01); 
+    assertEquals(tarifaEsperada, pasajero03.consultarSaldoDespuesDeViaje(pasajero03, 3000.0), 0.01); 
 }
 
 
 @Test
 public void testQueMePermitaGuardarYConsultarElHistorialDeMisViajesRealizados() {
 
-	Viaje misViajes = new Viaje();
+	Pasajero misViajes = new Pasajero(null, null, null, 0);
 	
 	LinkedHashSet<Viaje> miHistorialViajes= new LinkedHashSet<>(); 
 	
@@ -145,7 +145,7 @@ public void testQueLaAppMeDejeCancelarUnaReserva() {
 	//PROFE :para verificar este test cree un viaje que tenga una hora de reserva mayor a 60 minutos 
 	// desde la hora en la que la queremos cancelar, sino nos va a devolver false
 	//va a funcionar en funcion de la hora en la que se corra el test
-	Viaje viaje01 = new Viaje(LocalTime.of(22, 35), LocalDate.of(2023, 5, 12), "Varela 777", "Peron 473");
+	Viaje viaje01 = new Viaje(LocalTime.of(21, 35), LocalDate.of(2023, 5, 12), "Varela 777", "Peron 473");
  
     assertTrue(misViajes.cancelarReserva(viaje01));
 	
@@ -153,44 +153,29 @@ public void testQueLaAppMeDejeCancelarUnaReserva() {
 
 
 @Test
-public void testQueMeDejeCambiarDestinoDeMiViaje() {
-
-	Viaje viaje01 = new Viaje(LocalTime.of(18, 00), LocalDate.of(2023, 5, 12), "Sarmiento 4020, caba", "Peron 473, caba");
-    
-	String esperado = "Corrientes 1900, caba";
-    String esperado2 = viaje01.setDestino("Corrientes 1900, caba"); 
-	
-    assertEquals(esperado, esperado2);
-	
-}
-
-@Test
 public void testQueSePuedanAgregarMasDeUnDestino() {
    Viaje destinosMultiples = new Viaje();
    ArrayList<Viaje> destinos= new ArrayList<>(); 
-   Viaje viaje01 = new Viaje("Buenos Aires 199, Castelar, Moron"); 
-   Viaje viaje02 = new Viaje("Italia 300, Ramos Mejia"); 
-   Viaje viaje03 = new Viaje("Rivadavia 200, Ciudadela"); 
-   destinos.add(viaje01); 
-   destinos.add(viaje02);
-   destinos.add(viaje03);
+   Viaje destino01 = new Viaje(LocalTime.of(18, 00), LocalDate.of(2023, 5, 12), "Sarmiento 4020, caba", "Peron 473, caba");
+   Viaje destino02 = new Viaje("Peron 990, caba");
+   Viaje destino03 = new Viaje("Rivadavia 222, caba");
+   destinos.add(destino01); 
+   destinos.add(destino02);
+   destinos.add(destino03);
    
    assertEquals(3, destinosMultiples.getDestinosMultiples(destinos).size());
+   
 }
 
 
 @Test
-public void queSeLeCobre() {
-   Viaje destinosMultiples = new Viaje();
-   ArrayList<Viaje> destinos= new ArrayList<>(); 
-   Viaje viaje01 = new Viaje("Buenos Aires 199, Castelar, Moron"); 
-   Viaje viaje02 = new Viaje("Italia 300, Ramos Mejia"); 
-   Viaje viaje03 = new Viaje("Rivadavia 200, Ciudadela"); 
-   destinos.add(viaje01); 
-   destinos.add(viaje02);
-   destinos.add(viaje03);
+public void queSeLeCobreUnPorcentajeAUnPasajeroSiNoCancelaElViajeConAnticipacion() {
    
-   assertEquals(3, destinosMultiples.getDestinosMultiples(destinos).size());
+   Viaje viaje1 = new Viaje(LocalTime.of(19, 30), LocalDate.of(2023, 5, 12), "Sarmiento 4020, caba", "Peron 473, caba");
+   Pasajero pasajero1= new Pasajero("pepe", "diaz", 7898676, 3000.0); 
+   
+   assertEquals(2900.0, viaje1.cobrarSeguroDeCancelacion(pasajero1, viaje1), 0.01);
+   
 }
 
 
