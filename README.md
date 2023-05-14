@@ -2,7 +2,10 @@
 
 ## Descripcion del Proyecto:
 ### Sistema de Gestion de Viajes
-El objetivo del software es poder tener un sistema de gestión de viajes donde se pueda almacenar y controlar los datos pertenecientes a una flota de vehiculos en la cual será posible crear Motos, Autos y Combis, y asignar un conductor, pasajeros y viajes con hora, fecha, origen y destino. Se busca poder almacenar objetos dentro las colecciones pertenecientes a las clases, validar que efectivamente correspondan y poder crear múltiples escenarios donde un determinado vehículo con conductor y pasajeros pueda tener asignado un viaje.
+El objetivo del software es poder tener un sistema de gestión de viajes donde se pueda almacenar y controlar los vehículos guardados en una flota de transportes en la cual será posible crear Motos, Autos y Combis, y asignar un conductor, pasajeros (los cuales cuentan con un saldo) y viajes con hora, fecha, origen, destino, tarifa. Se busca poder almacenar objetos dentro las colecciones pertenecientes a las clases, validar que efectivamente funcionen y poder crear múltiples escenarios donde un determinado vehículo con conductor y pasajeros pueda tener asignado un viaje. Perteneciente a la clase Auto, es posible crear un objeto Taxi donde un Pasajero pueda reservar, cancelar un viaje, ver la tarifa según los kilómetros que el viaje demande, consultar el historial de viajes y que se le cobre un extra si cancela el viaje sin anticipación.
+#### <ins>Explicación aparte:</ins>
+**testQueLaAppMeDejeCancelarUnaReserva();** utiliza LocalTime por lo que para probarlo y que corra se debe crear un viaje con un horario 60 minutos mayor del horario actual ya que se utilizo el .Now() para traer la hora actual.
+
 
 ### Tecnologias utilizadas:
 
@@ -53,6 +56,8 @@ testQueLaAppMeDejeCancelarUnaReserva();
 testQueMeDejeCambiarDestinoDeMiViaje();
 
 testQueSePuedanAgregarMasDeUnDestino();
+
+queSeLeCobreUnPorcentajeAUnPasajeroSiNoCancelaElViajeConAnticipacion
 
 ## MIT License
 
